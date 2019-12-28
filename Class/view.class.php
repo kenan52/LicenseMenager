@@ -20,11 +20,6 @@ class View extends Database{
             </tr>';
         }
     }
-    #Method getting username from database with user id
-    public function showUsername($uid){
-        $datas = $this->getUserById($uid);
-        return $datas[0]['username'];
-    }
     #Method for license editing.
     public function showLicenseEdit($license_id){
         $datas = $this->getLicenseInfo($license_id);
