@@ -9,7 +9,7 @@ if(!isset($_SESSION['uid']) && empty($_SESSION['uid'])){
     header("Location: login.php");   
 }
 
-#Delete accom
+#Delete License
 if (isset($_GET['delete'])) {
     if ($database->deleteLicense($_GET['delete'])) {
         header("Location: ../index.php"); 
