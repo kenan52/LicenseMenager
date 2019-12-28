@@ -51,10 +51,6 @@ $database = new Database;
                         <td><input type="text" class="form-control" name="period" value="" placeholder="Enter Period"></td>
                     </tr>
                     <tr>
-                        <td>Creator</td>
-                        <td><input type="text" class="form-control" name="creator" value="" placeholder="Enter creator"></td>
-                    </tr>
-                    <tr>
                         <td colspan="2" align="center"><input type="submit" class="primary-btn" name="edit" value="Add License"></td>
                     </tr>
                 </table>
