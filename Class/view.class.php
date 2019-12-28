@@ -1,13 +1,13 @@
 <?php
 
 class View extends Database{
-    
+    #Method show all licenses
     public function showAllLicense($term){
         $datas = $this->getAllLicense($term);
         foreach ($datas as $data) {
             echo '<tr>
                 <td>'.$data["name"].'</td>
-                <td>'.$data["creator"].'</td>
+                <td>'.$data['creator'].'</td>
                 <td>    
                 <a href="editLicense.php?id='.$data["id"].'" class="text-muted">
                 <i class="fa fa-edit"></i>
@@ -19,6 +19,11 @@ class View extends Database{
                 </td>
             </tr>';
         }
+    }
+    #Method getting username from database with user id
+    public function showUsername($uid){
+        $datas = $this->getUserById($uid);
+        return $datas[0]['username'];
     }
     #Method for license editing.
     public function showLicenseEdit($license_id){
@@ -47,10 +52,6 @@ class View extends Database{
             <tr>
                 <td>Period</td>
                 <td><input type="text" class="form-control" name="period" value="'.$datas['period'].'" placeholder="Enter Period"></td>
-            </tr>
-            <tr>
-                <td>Creator</td>
-                <td><input type="text" class="form-control" name="creator" value="'.$datas['creator'].'" placeholder="Enter creator"></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" class="primary-btn" name="edit" value="Update"></td>
