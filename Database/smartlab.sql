@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2019 at 01:43 AM
+-- Generation Time: Dec 28, 2019 at 08:11 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -33,7 +33,7 @@ CREATE TABLE `license` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `type` set('monthly','yearly') COLLATE utf8_unicode_ci NOT NULL,
   `period` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
-  `creator` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `creator` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -41,9 +41,9 @@ CREATE TABLE `license` (
 --
 
 INSERT INTO `license` (`id`, `name`, `type`, `period`, `creator`) VALUES
-(17, 'PHP Certificate', 'yearly', '365', 'Zend'),
-(18, 'Test 1', 'monthly', '364', 'Admin'),
-(19, 'Test 2', 'yearly', '365', 'Kenan');
+(25, 'PHP Certificate', 'yearly', '365', 6),
+(26, 'Test 1', 'monthly', '364', 6),
+(27, 'Test 3', 'yearly', '365', 6);
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,8 @@ INSERT INTO `user` (`id`, `username`, `password`) VALUES
 --
 ALTER TABLE `license`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `type` (`type`);
+  ADD KEY `type` (`type`),
+  ADD KEY `creator` (`creator`);
 
 --
 -- Indexes for table `user`
@@ -89,13 +90,23 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `license`
 --
 ALTER TABLE `license`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `license`
+--
+ALTER TABLE `license`
+  ADD CONSTRAINT `license_user_fk` FOREIGN KEY (`creator`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
