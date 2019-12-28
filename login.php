@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
 				      <input type="text" name="username" class="form-control" placeholder="Username..." required autofocus>
 				    </div>
 				    <div class="col">
-				      <input type="password" name="password" class="form-control" placeholder="Lozinka..." required>
+				      <input type="password" name="password" class="form-control" placeholder="Password..." required>
 				    </div>
                   </div>
 				  <?php
