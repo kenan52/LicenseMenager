@@ -9,7 +9,7 @@ if(!isset($_SESSION['uid']) && empty($_SESSION['uid'])){
     header("Location: login.php");   
 }
 
-#Delete License
+#Delete accom
 if (isset($_GET['delete'])) {
     if ($database->deleteLicense($_GET['delete'])) {
         header("Location: ../index.php"); 
@@ -19,11 +19,11 @@ if (isset($_GET['delete'])) {
 }
 #editLicense
 if (isset($_GET['edit'])) {
-    $database->editLicenseInfo($_GET['id'], $_POST['name'], $_POST['type'], $_POST['period'], $_POST['creator']);
+    $database->editLicenseInfo($_GET['id'], $_POST['name'], $_POST['type'], $_POST['period']);
 }
 #Create license
 if (isset($_GET['insert'])) {
-    $database->insertLicense($_POST['name'], $_POST['type'], $_POST['period'], $_POST['creator']);
+    $database->insertLicense($_POST['name'], $_POST['type'], $_POST['period'], $_SESSION["uid"]);
 }
 
 ?>
